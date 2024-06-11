@@ -5,7 +5,22 @@ const UserModel = require("../mongoose/UserSchema.js");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-router.post("/", async (req, res) => {
+async function validateUser(req, res, next) {
+  const { username, password } = req.body;
+  if (!username || !password) {
+    res.send("Invalid username or password");
+    return;
+  }
+  const existingUser = await UserModel.findOne({ username });
+  if (!existingUser) {
+    res.send("User does not exist");
+    return;
+  }
+
+  next();
+}
+
+router.post("/", validateUser, async (req, res) => {
   const { username, password } = req.body;
   const existingUser = await UserModel.findOne({ username });
   if (!existingUser) {
