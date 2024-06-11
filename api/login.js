@@ -22,11 +22,7 @@ async function validateUser(req, res, next) {
 
 router.post("/", validateUser, async (req, res) => {
   const { username, password } = req.body;
-  const existingUser = await UserModel.findOne({ username });
-  if (!existingUser) {
-    res.send("User does not exist");
-    return;
-  }
+
   const validPass = await bcrypt.compare(password, existingUser.password);
   if (!validPass) {
     res.send("Invalid password");
