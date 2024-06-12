@@ -4,21 +4,7 @@ const path = require("path");
 const UserModel = require("../mongoose/UserSchema.js");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-
-async function validateUser(req, res, next) {
-  const { username, password } = req.body;
-  if (!username || !password) {
-    res.send("Invalid username or password");
-    return;
-  }
-  const existingUser = await UserModel.findOne({ username });
-  if (!existingUser) {
-    res.send("User does not exist");
-    return;
-  }
-
-  next();
-}
+const validateUser = require("../middleware/validateUser.js");
 
 router.post("/", validateUser, async (req, res) => {
   const { username, password } = req.body;
