@@ -6,7 +6,6 @@ const UserModel = require("../mongoose/UserSchema.js");
 const authenticateUser = require("../middleware/authenticateUser.js");
 
 router.get("/me", authenticateUser, async (req, res) => {
-  console.log(req.headers);
   const { token } = req.headers;
 
   if (!token) {

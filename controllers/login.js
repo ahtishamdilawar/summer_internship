@@ -26,7 +26,7 @@ router.post("/", validateUser, async (req, res) => {
   );
 
   res.send({
-    accessToken: token.acessToken,
+    accessToken: token.accessToken,
     refreshToken: token.refreshToken,
   });
 });
