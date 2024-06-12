@@ -1,23 +1,23 @@
 const UserModel = require("../mongoose/UserSchema.js");
 const jwt = require("jsonwebtoken");
-const RefreshTokenSchema = require("../mongoose/refreshToken.js");
+const refreshtokenSchema = require("../mongoose/refreshToken.js");
 require("dotenv").config();
 
 const authenticateUser = async (req, res, next) => {
-  const { AccessToken, RefreshToken } = req.headers;
-
-  if (!AccessToken) {
+  const { accesstoken, refreshtoken } = req.headers;
+  console.log(req.headers);
+  if (!accesstoken) {
     res.send("No token provided");
     return;
   }
 
   try {
-    const decoded = jwt.verify(AccessToken, process.env.JWT);
-    const decodedRefresh = jwt.verify(RefreshToken, process.env.REFRESH);
-    const savedRefreshToken = await RefreshTokenSchema.findOne({
-      token: RefreshToken,
+    const decoded = jwt.verify(accesstoken, process.env.JWT);
+    const decodedRefresh = jwt.verify(refreshtoken, process.env.REFRESH);
+    const savedrefreshtoken = await refreshtokenSchema.findOne({
+      token: refreshtoken,
     });
-    if (!savedRefreshToken) {
+    if (!savedrefreshtoken) {
       res.send("Invalid Refresh token Login again");
       return;
     }
@@ -35,7 +35,7 @@ const authenticateUser = async (req, res, next) => {
     console.log("valid user");
     next();
   } catch (error) {
-    if (!RefreshToken) {
+    if (!refreshtoken) {
       res.send("No token provided");
       return;
     } else {

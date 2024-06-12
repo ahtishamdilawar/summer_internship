@@ -5,7 +5,7 @@ const UserModel = require("../mongoose/UserSchema.js");
 const refreshTokenModel = require("../mongoose/refreshToken.js");
 const generateJwt = require("../utils/generateJwt.js");
 
-router.post("/", async (req, res) => {
+router.get("/", async (req, res) => {
   //console.log(req.headers);
   const { refreshtoken } = req.headers;
   //console.log(refreshtoken);
