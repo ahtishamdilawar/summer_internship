@@ -4,7 +4,7 @@ const path = require("path");
 const bcrypt = require("bcrypt");
 const validateUser = require("../middleware/validateUser.js");
 const generatejwt = require("../utils/generateJwt.js");
-const refreshToken = require("../mongoose/refreshToken.js");
+const refreshToken = require("../models/refreshToken.js");
 
 router.post("/", validateUser, async (req, res) => {
   const { username, password } = req.body;

@@ -1,4 +1,4 @@
-const UserModel = require("../mongoose/UserSchema.js");
+const UserModel = require("../models/UserSchema.js");
 
 async function validateUser(req, res, next) {
   const { username, password, email, role } = req.body;

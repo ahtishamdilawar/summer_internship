@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 const path = require("path");
 const jwt = require("jsonwebtoken");
-const UserModel = require("../mongoose/UserSchema.js");
-const refreshTokenModel = require("../mongoose/refreshToken.js");
+const UserModel = require("../models/UserSchema.js");
+const refreshTokenModel = require("../models/refreshToken.js");
 
 router.delete("/", async (req, res) => {
   const { refreshtoken } = req.headers;

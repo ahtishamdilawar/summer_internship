@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
-const UserModel = require("../mongoose/UserSchema.js");
-const refreshTokenModel = require("../mongoose/refreshToken.js");
+const UserModel = require("../models/UserSchema.js");
+const refreshTokenModel = require("../models/refreshToken.js");
 const generateJwt = require("../utils/generateJwt.js");
 
 router.get("/", async (req, res) => {

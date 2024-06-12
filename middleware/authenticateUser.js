@@ -1,6 +1,6 @@
-const UserModel = require("../mongoose/UserSchema.js");
+const UserModel = require("../models/UserSchema.js");
 const jwt = require("jsonwebtoken");
-const refreshtokenSchema = require("../mongoose/refreshToken.js");
+const refreshtokenSchema = require("../models/refreshToken.js");
 require("dotenv").config();
 
 const authenticateUser = async (req, res, next) => {
