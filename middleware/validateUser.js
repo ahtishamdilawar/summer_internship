@@ -24,7 +24,7 @@ async function validateUser(req, res, next) {
     if (!existingUser) {
       return res.status(400).send("User does not exist");
     }
-    req.user = existingUser;
+    res.locals.user = existingUser;
     req.isRegistration = false;
   }
 
