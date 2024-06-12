@@ -5,9 +5,10 @@ const loginController = require("../controllers/login.js");
 const registerController = require("../controllers/register.js");
 const userController = require("../controllers/user.js");
 const refreshTokenController = require("../controllers/refresh.js");
-
+const logoutController = require("../controllers/logout.js");
 router.use("/register", registerController);
 router.use("/login", loginController);
 router.use("/user", userController);
 router.use("/refresh", refreshTokenController);
+router.use("/logout", logoutController);
 module.exports = router;

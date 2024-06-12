@@ -24,9 +24,7 @@ const authenticateUser = async (req, res, next) => {
 
     const user = await UserModel.findOne({ _id: decoded.user._id });
 
-    console.log("user");
-    console.log(user);
-    if (!user || user._id !== refreshDecoded.user._id) {
+    if (!user || user._id.toString() !== decodedRefresh.user._id) {
       res.send("User not found");
       return;
     }
@@ -35,6 +33,7 @@ const authenticateUser = async (req, res, next) => {
     console.log("valid user");
     next();
   } catch (error) {
+    console.log(error);
     if (!refreshtoken) {
       res.send("No token provided");
       return;
