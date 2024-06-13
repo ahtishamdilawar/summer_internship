@@ -4,8 +4,11 @@ const path = require("path");
 const jwt = require("jsonwebtoken");
 const UserModel = require("../../models/UserSchema.js");
 const authenticateUser = require("../../middleware/authenticateUser.js");
-
-router.get("/me", authenticateUser, async (req, res) => {
-  res.send(req.user);
+const getRole = require("../../middleware/roles.js");
+router.get("/me", authenticateUser, getRole, async (req, res) => {
+  res.send({
+    user: res.locals.user,
+    role: res.locals.role,
+  });
 });
 module.exports = router;

@@ -5,7 +5,7 @@ require("dotenv").config();
 
 const authenticateUser = async (req, res, next) => {
   const { accesstoken, refreshtoken } = req.headers;
-  console.log(req.headers);
+  // console.log(req.headers);
   if (!accesstoken) {
     res.send("No token provided");
     return;
@@ -30,8 +30,9 @@ const authenticateUser = async (req, res, next) => {
     }
 
     req.user = user;
-    console.log("valid user");
-    console.log(user);
+    res.locals.user = user;
+    //console.log("valid user");
+    //console.log(user);
     next();
   } catch (error) {
     console.log(error);
