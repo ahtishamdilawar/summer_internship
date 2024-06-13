@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 const UserModel = require("../models/UserSchema.js");
 const refreshTokenModel = require("../models/refreshToken.js");
 
-router.delete("/", async (req, res) => {
+router.post("/", async (req, res) => {
   const { refreshtoken } = req.headers;
   if (!refreshtoken) {
     return res.send("No refresh token provided");
