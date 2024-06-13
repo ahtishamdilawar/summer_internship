@@ -3,7 +3,8 @@ const router = express.Router();
 const path = require("path");
 const accessExamsController = require("../../controllers/teacher/accessExams.js");
 const createExamController = require("../../controllers/teacher/createExam.js");
-
+const editExamController = require("../../controllers/teacher/editExam.js");
 router.use("/createExam", createExamController);
 router.use("/accessExams", accessExamsController);
+router.use("/editExam", editExamController);
 module.exports = router;
