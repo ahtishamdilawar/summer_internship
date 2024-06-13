@@ -10,7 +10,7 @@ router.put("/:examId", authenticateUser, getRole, async (req, res) => {
   if (res.locals.role !== "Teacher") return res.status(403).send("Forbidden");
 
   const { examId } = req.params;
-  const { title, description, duration, questions } = req.body;
+  const { title, description, duration } = req.body;
 
   const session = await mongoose.startSession();
   session.startTransaction();
@@ -29,7 +29,6 @@ router.put("/:examId", authenticateUser, getRole, async (req, res) => {
         .json({ message: "Exam not found or not authorized" });
     }
 
-    // Update exam details if provided
     if (title !== undefined) exam.title = title;
     if (description !== undefined) exam.description = description;
     if (duration !== undefined) exam.duration = duration;

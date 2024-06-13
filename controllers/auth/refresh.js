@@ -6,9 +6,8 @@ const refreshTokenModel = require("../../models/refreshToken.js");
 const generateJwt = require("../../utils/generateJwt.js");
 
 router.get("/", async (req, res) => {
-  //console.log(req.headers);
   const { refreshtoken } = req.headers;
-  //console.log(refreshtoken);
+
   if (!refreshtoken) {
     return res.send("No refresh token provided");
   }
