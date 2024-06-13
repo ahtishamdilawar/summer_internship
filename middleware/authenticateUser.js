@@ -31,6 +31,7 @@ const authenticateUser = async (req, res, next) => {
 
     req.user = user;
     console.log("valid user");
+    console.log(user);
     next();
   } catch (error) {
     console.log(error);

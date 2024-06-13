@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
-const UserModel = require("../models/UserSchema.js");
-const refreshTokenModel = require("../models/refreshToken.js");
-const generateJwt = require("../utils/generateJwt.js");
+const UserModel = require("../../models/UserSchema.js");
+const refreshTokenModel = require("../../models/refreshToken.js");
+const generateJwt = require("../../utils/generateJwt.js");
 
 router.get("/", async (req, res) => {
   //console.log(req.headers);

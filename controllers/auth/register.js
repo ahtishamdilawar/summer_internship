@@ -2,10 +2,10 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const validateUser = require("../middleware/validateUser.js");
-const UserModel = require("../models/UserSchema.js");
-const generatejwt = require("../utils/generateJwt.js");
-const RoleModel = require("../models/RoleSchema.js");
+const validateUser = require("../../middleware/validateUser.js");
+const UserModel = require("../../models/UserSchema.js");
+const generatejwt = require("../../utils/generateJwt.js");
+const RoleModel = require("../../models/RoleSchema.js");
 
 router.post("/", validateUser, async (req, res) => {
   const { username, password, email, role } = req.body;
