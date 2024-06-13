@@ -5,7 +5,6 @@ const RoleModel = require("../../models/RoleSchema.js");
 const UserModel = require("../../models/UserSchema.js");
 
 router.get("/:id", async (req, res) => {
-  //get role by id
   const role = await RoleModel.findOne({ _id: req.params.id });
   if (!role) return res.status(400).send("Role not found");
   res.send(role);
