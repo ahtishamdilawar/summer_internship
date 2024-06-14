@@ -46,7 +46,11 @@ router.post("/:submissionId", authenticateUser, getRole, async (req, res) => {
       feedback: feedback,
     });
 
-    await newResult.save({ session });
+    await newResult.updateOne(
+      { submission_id: submissionId },
+      { score, feedback },
+      { session, upsert: true }
+    );
 
     await session.commitTransaction();
     session.endSession();
