@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const path = require("path");
 const QuestionModel = require("../../models/QuestionSchema.js");
-const ExamModel = require("../../models/Exam.js");
+const ExamModel = require("../../models/ExamsSchema.js");
 const authenticateUser = require("../../middleware/authenticateUser.js");
 const getRole = require("../../middleware/roles.js");
 

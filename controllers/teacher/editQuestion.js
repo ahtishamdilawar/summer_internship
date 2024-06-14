@@ -3,14 +3,15 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const QuestionModel = require("../../models/QuestionSchema.js");
 const authenticateUser = require("../../middleware/authenticateUser.js");
+const ExamModel = require("../../models/ExamsSchema.js");
 const getRole = require("../../middleware/roles.js");
 
-router.put("/:questionId", authenticateUser, getRole, async (req, res) => {
+router.post("/:questionId", authenticateUser, getRole, async (req, res) => {
   if (res.locals.role !== "Teacher") return res.status(403).send("Forbidden");
 
   const { questionId } = req.params;
   const { text, options, correctAnswer } = req.body;
-
+  console.log(res.locals.user);
   const session = await mongoose.startSession();
   session.startTransaction();
 
@@ -25,7 +26,7 @@ router.put("/:questionId", authenticateUser, getRole, async (req, res) => {
 
     const exam = await ExamModel.findOne({
       _id: question.examID,
-      teacherID: req.user._id,
+      teacherID: res.locals.user._id,
     }).session(session);
 
     if (!exam) {
