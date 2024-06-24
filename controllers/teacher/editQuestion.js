@@ -11,7 +11,7 @@ router.post("/:questionId", authenticateUser, getRole, async (req, res) => {
 
   const { questionId } = req.params;
   const { text, options, correctAnswer } = req.body;
-  console.log(res.locals.user);
+
   const session = await mongoose.startSession();
   session.startTransaction();
 
