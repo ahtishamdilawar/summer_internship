@@ -6,6 +6,7 @@ const ResultSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Submission",
     required: true,
+    unique: true,
   },
   score: {
     type: Number,
